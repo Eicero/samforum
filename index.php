@@ -7,8 +7,12 @@
    Texts.  A copy of the license is included in the section entitled "GNU
    Free Documentation License". */
 
+   //work on search feature
 
 	session_start();
+	
+	//link to search bar
+	echo "<a href=\"search.php\"> Search on this site </a> </br>";
 	
 	if(!isset($_SESSION["logged_in"])){
 		//if user is not logged in then show login, register, and recover_password options
