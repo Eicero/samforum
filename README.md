@@ -13,12 +13,12 @@ I have been working on this forum for a while, thought of adding couple premium 
 - Post threads
 - Post replies
 - Search
+- Chatbox
 
 ##Functionality that may be added in future.
 - Mentioning system
 - Private messaging
 - Avatar
-- Chat box
 - Status update
 - Design
 
