@@ -8,6 +8,7 @@
    Free Documentation License". */
 
    //work on search feature
+	include_once("connection_to_db.php");
 
 	session_start();
 	
@@ -23,6 +24,7 @@
 		echo "Hello, " .$_SESSION["logged_in"] . "</br>";
 		echo "<a href=\"login_user/logout.php\"> Logout </a> </br>";
 		echo "<a href=\"user_profile.php\"> My profile </a> </br>";
+		echo "<a href=\"chat_box.php\"> Join chat </a> </br>";
 		
 		//If user is logged in(session exists), we're going to check if user is admin.
 		include_once("login_user/login_class.php");
@@ -31,8 +33,6 @@
 		//..checks if user is admin
 		login::show_admincp($conn);
 	}
-	
-	include_once("connection_to_db.php");
 	
 	//Shows categories and other things.
 	include_once("show_data_class.php");

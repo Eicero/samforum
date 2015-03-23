@@ -20,7 +20,12 @@
 			
 			//If no field is empty call function check_credentials.
 			if(!empty($this->username) and !empty($this->user_password)){
-				$this->check_credentials();
+				$select_reg_users_table= $this->conn->prepare("select 1 from registered_users");
+				if($select_reg_users_table->execute()){
+					$this->check_credentials();
+				}else{
+					echo "1. Create registered_users tables first 2. Register atleast one user";
+				}
 			}else{
 				$this->show_message("Please enter username & password");
 			}
@@ -45,13 +50,13 @@
 			}
 		}
 	
-		function check_credentials(){	
+		function check_credentials(){
 			$query_credentials = $this->conn->prepare("SELECT username, user_password FROM registered_users WHERE username = :username and user_password = :user_password");
 			if($query_credentials->execute(array('username'=>$this->username, 'user_password'=>$this->user_password))){
 				$get_data = $query_credentials->fetch(PDO::FETCH_ASSOC);
 				if(count($get_data) == 2){
+					//echo "hi";
 					$this->check_confirmation();
-					//echo "here";
 				}else{
 					include("../connection_to_db.php");
 					$Security = new security($conn);
@@ -111,13 +116,15 @@
 		}
 		
 		//this function is run when user tries to login. If attempts are less than 5 and time past is more than 10 minutes than login, else, run function insert_attempts
-		function check_attempts_num_time(){			
+		function check_attempts_num_time(){
+				//echo "hi";
 				$query_select_time_attempts_num = $this->conn->prepare("select last_attempt, attempts_num from login_attempts where user_ip = :user_ip");
-				$query_select_time_attempts_num->execute(array('user_ip'=>$this->IP));
+				$query_select_time_attempts_num->execute(array(':user_ip'=>$this->IP));
 				$this->returned_array		= $query_select_time_attempts_num->fetch(PDO::FETCH_ASSOC);
-			
+
 			//getting back the ip. checking if ip exists in db. 
-			if(!empty($this->returned_array)){		
+			if(!empty($this->returned_array)){
+				
 				$this->last_attempt_time	= $this->returned_array["last_attempt"];
 				$this->attempts_num			= $this->returned_array["attempts_num"];		
 				
@@ -155,6 +162,7 @@
 			
 		}
 		
+		
 		function insert_attempts(){
 			$select_ip_query = $this->conn->prepare("select user_ip from login_attempts where user_ip = :user_ip");
 			$select_ip_query->execute(array('user_ip'=>$this->IP));
@@ -167,8 +175,9 @@
 				 $query_update_attempts = $this->conn->prepare("update login_attempts set last_attempt = :last_attempt, attempts_num = attempts_num + 1 where user_ip = :user_ip");
 				
 				//updating last attempt time and attempt number
-				if($query_update_attempts->execute(array('last_attempt'=>$this->current_time, 'user_ip'=>$this->IP))){
-					echo "Wrong username or password";
+				if($query_update_attempts->execute(array(':last_attempt'=>$this->current_time, ':user_ip'=>$this->IP))){
+					//echo "Wrong username or password";
+					$this->check_attempts_num_time();
 				}else{
 					echo "record couldnt be updated as previous query failed to execute.";
 				}
@@ -180,4 +189,6 @@
 			}
 		}
 	}
+	
+	//check_credentials -> insert_attempts - >
 ?>

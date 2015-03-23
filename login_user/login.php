@@ -6,9 +6,6 @@
 	with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
 	Texts.  A copy of the license is included in the section entitled "GNU
 	Free Documentation License". */
-
-
-
 ?>
 
 <b> Login </b>
@@ -27,6 +24,5 @@
 		include("../connection_to_db.php");
 		include("login_class.php");
 		$login = new login($conn);
-
 	}
 ?>

@@ -9,8 +9,8 @@ Free Documentation License". */
 ?>
 
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET">
-  <input name="search_query" type="text"> 
-  <input name="search" type="submit" value="Search">
+  <input name="search_query" type="text">
+  <input name="search" type="submit" value="search">
 </form>
 	
 <?PHP
@@ -23,7 +23,9 @@ Free Documentation License". */
 	include("search_class.php");
 	
 	$Search = new Search;
-	if($Search->set_data($conn, $_GET)){
+	if($Search->set_data($conn)){
 		$Search->search_in_db();
 	}
+	
+	
 ?>

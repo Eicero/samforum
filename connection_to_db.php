@@ -18,10 +18,9 @@ $pass = "";
 
 
 try{
-	$conn = new pdo('mysql:host='. $host . ';dbname=' . $db, $user, $pass);				
+	$conn = new pdo('mysql:host='. $host . ';dbname=' . $db, $user, $pass);	
 }catch(PDOException $error){
-	echo $error->getMessage();
-	die();
+	die($error->getMessage());
 }
 
 ?>
