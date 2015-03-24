@@ -31,7 +31,7 @@
 		include_once("connection_to_db.php");
 		
 		//..checks if user is admin
-		login::show_admincp($conn);
+		echo Login::show_admincp($conn);
 	}
 	
 	//Shows categories and other things.
