@@ -1,16 +1,14 @@
 <?PHP
-	class Login{
+	class Login extends General{
 		private function are_values_clean($posted_data, $conn){
 			if(isset($posted_data["login"])){
 				if(!empty($posted_data["username"]) and !empty($posted_data["password"])){
 					$this->username			= $posted_data['username'];
 					$this->user_password	= md5($posted_data['password']);
 					$this->conn				= $conn;
-					$this->user_ip			= $_SERVER["REMOTE_ADDR"];
-					$this->current_time		= time();
 					return true;
 				}else{
-					echo "Please leave no field empty";
+					header("Location: ../error_message.php?message=Please leave no field empty");
 					return false;
 				}
 			}
@@ -21,7 +19,7 @@
 			if($select_table_column->execute()){
 				return true;
 			}else{
-				echo "Script failed to find the table 'registered_users' in your database, please register atleast one user for table to be created.";
+				header("Location: ../error_message.php?message=Script failed to find the table 'registered_users' in your database, please register atleast one user for table to be created.");
 				return false;
 			}
 		}
@@ -33,7 +31,7 @@
 				if(count($get_user_details) == 2){
 					return true;
 				}else{
-					echo "Wrong username or password";
+					header("Location: ../error_message.php?message=Wrong username or password");
 					return false;
 				}
 			}
@@ -46,7 +44,7 @@
 			if($compare["is_confirmed"] == 1){
 				return true;
 			}else{
-				echo "This account has no yet been confirmed, please verify the account and try again";
+				header("Location: ../error_message.php?message=This account has not yet been confirmed, please confirm the account first");
 				return false;
 			}
 	
@@ -76,21 +74,25 @@
 			
 				//If a table named register_users exists in database, with atleast one registered users.
 				if($this->does_a_user_exists_in_registered_users_table()){
-							
-					//If login information is correct
-					if($this->are_details_right()){
 					
-						//If account is a confirmed account
-						if($this->is_account_confirmed()){
+					//If captcha entered is right.
+					if(parent::is_captcha_right()){
+					
+						//If login information is correct
+						if($this->are_details_right()){
+						
+							//If account is a confirmed account
+							if($this->is_account_confirmed()){
 								$this->login_the_user();
 							}
-						
+							
 						}
 					}
-					
 				}
-				
+					
 			}
+				
+		}
 	}
 
 

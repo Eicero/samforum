@@ -7,6 +7,7 @@
 	Texts.  A copy of the license is included in the section entitled "GNU
 	Free Documentation License". */
 
+session_start();
 
 ?>
 
@@ -17,6 +18,7 @@
 	Password <input name="password_one" type="text"> </br>
 	Repeat Password <input name="password_two" type="text"> </br>
 	Enter captcha <input name="captcha" type="text"> </br>
-	<?PHP include("captcha_class.php"); captcha::display_captcha();  ?>
+	
+	<?PHP include("form_registration_class.php"); register::display_captcha(); ?>
 	<input name="register_user" type="submit" value="Register">
 </form>

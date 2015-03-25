@@ -1,27 +1,6 @@
 <?PHP
-	/* Copyright (c)  2015  S.Samiuddin. phpdevsami@gmail.com
-	Permission is granted to copy, distribute and/or modify this document
-	under the terms of the GNU Free Documentation License, Version 1.2
-	or any later version published by the Free Software Foundation;
-	with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
-	Texts.  A copy of the license is included in the section entitled "GNU
-	Free Documentation License". */
 
-	
-/*
-	function: imagestring();
-    Image reference.
-    Font-size of the text (it can be 5 at most).
-    x-coordinate (changing proportionally for every alphabet).
-    y-coordinate (kept the same, although we could change this randomly too).
-    Actual string to be written.
-    Font-color of the text.
-*/
-if(!isset($_SESSION)){
-	session_start();
-}
-
-class captcha{
+abstract class General{
 	//This method generates captcha.
 	static function display_captcha(){
 		//possible letters that can can come in captcha.
@@ -49,7 +28,29 @@ class captcha{
 		imagepng($image, "image.png");
 		echo "<img src='image.png'> </br>";
 	}
-}
+	
+	static function is_captcha_right(){
+		//Check if captcha matches the text inserted. random string session is made by captcha class
+		if($_POST["captcha"] == $_SESSION["random_string"]){
+			return true;
+		}else{
+			header("Location: ../error_message.php?message=wrong captcha inserted, try again");
+		}
+	}
+ 
+ 
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
-
-

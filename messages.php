@@ -1,5 +1,3 @@
-
-
 <?PHP
 	define('ALLOWED', true);
 	include("chatbox_class.php");

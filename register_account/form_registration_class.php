@@ -6,8 +6,8 @@
 	with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
 	Texts.  A copy of the license is included in the section entitled "GNU
 	Free Documentation License". */
-
-	class register {
+	include("../general/general_class.php");
+	class register extends General {
 		private $chean_data;
 		private $username;
 		private $email;
@@ -23,7 +23,7 @@
 		private $conn;
 		public  $show_errors;
 
-		function __construct($data, $conn){
+		function __construct($data='', $conn=''){
 			$this->data = $data;
 			$this->conn = $conn;
 			$this->arr_length = count($data) - 1;
@@ -63,13 +63,8 @@
 							foreach($this->errors as $show_errors){
 								echo $show_errors . "</br>";
 							}
-						}
-						
-						//Check if captcha matches the text inserted. random string session is made by captcha class
-						elseif($_POST["captcha"] == $_SESSION["random_string"]){
+						}elseif($this::is_captcha_right()){
 							$this->insert_info();
-						}else{
-							$this->show_message("Wrong captcha entered. Please re-enter the captcha. ");
 						}
 					}
 				}
@@ -163,12 +158,12 @@
 						values(:username, :email, :user_password, :user_ip, :is_confirmed, :confirmation_code)
 						");
 						if($query_insert_info->execute(array(
-						'username'=>$this->cleaned_data["username"],
-						'email'=>$this->cleaned_data["email"],
-						'user_password'=>$this->user_password,
-						'user_ip'=>$this->user_ip,
-						'is_confirmed'=>$this->is_confirmed,
-						'confirmation_code'=>$this->confirmation_code
+						':username'=>$this->cleaned_data["username"],
+						':email'=>$this->cleaned_data["email"],
+						':user_password'=>$this->user_password,
+						':user_ip'=>$this->user_ip,
+						':is_confirmed'=>$this->is_confirmed,
+						':confirmation_code'=>$this->confirmation_code
 						))){	
 							$this->send_mail();
 						}else{

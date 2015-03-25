@@ -13,7 +13,6 @@
 	
 	if(isset($_POST["register_user"])){
 		require_once("form_registration_class.php");
-		//require_once("login_class.php");
 		require_once("../connection_to_db.php");
 		$register_user = new register($_POST, $conn);
 	}

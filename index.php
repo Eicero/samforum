@@ -6,6 +6,8 @@
    with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
    Texts.  A copy of the license is included in the section entitled "GNU
    Free Documentation License". */
+   
+	$doc_root = $_SERVER["DOCUMENT_ROOT"] = "files";
 
    //work on search feature
 	include_once("connection_to_db.php");
@@ -25,13 +27,16 @@
 		echo "<a href=\"login_user/logout.php\"> Logout </a> </br>";
 		echo "<a href=\"user_profile.php\"> My profile </a> </br>";
 		echo "<a href=\"chat_box.php\"> Join chat </a> </br>";
-		
+
 		//If user is logged in(session exists), we're going to check if user is admin.
+		
+		include_once("general/general_class.php");
 		include_once("login_user/login_class.php");
 		include_once("connection_to_db.php");
 		
 		//..checks if user is admin
 		echo Login::show_admincp($conn);
+		
 	}
 	
 	//Shows categories and other things.

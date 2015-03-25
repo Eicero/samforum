@@ -9,7 +9,7 @@
 
 	session_start();
 	if(!$_SESSION["acc_con"]){
-		header("location: index.php");
+		header("location: ../index.php");
 	}else{
 		echo "Account has been confirmed, you can now login" . "</br>";
 		session_destroy();
