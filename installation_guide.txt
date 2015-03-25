@@ -1,0 +1,7 @@
+1. Open connection_to_db.php file and write down your databse details, hostname, username, password and databse name.
+*****
+2. Change site_name name in form_registration_class.php on line 110 to your website/forum link, and "from" to your website's name.
+
+There is no need to import database or table, I have written all the queries, that should make required tables for you. Just create a database name "forum". Also make sure there's atleast one registered user or it might throw error.
+*****
+3. Change "power" in registration_users table to 1 to make yourself admin!

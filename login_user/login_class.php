@@ -1,5 +1,4 @@
 <?PHP
-	
 	class Login{
 		private function are_values_clean($posted_data, $conn){
 			if(isset($posted_data["login"])){
