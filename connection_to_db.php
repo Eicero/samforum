@@ -11,10 +11,10 @@ Free Documentation License". */
 
 
 //your host details.
-$host = "localhost";
-$db = "forum";
-$user = "root";
-$pass = "phpdevsami";
+$host = "";
+$db = "";
+$user = "";
+$pass = "";
 
 
 try{
