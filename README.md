@@ -5,15 +5,17 @@ I have been working on this forum for a while, thought of adding couple premium 
 ##Functionality:
 - Registration
 - Login
+- Captcha
 - Recover password
 - Change password
+- Chatbox
+- Search
+- Post threads
+- Post replies
 - Create category(admin)
 - Edit category(admin)
 - Delete categories(admin)
-- Post threads
-- Post replies
-- Search
-- Chatbox
+
 
 ##Functionality that may be added in future.
 - Mentioning system
