@@ -29,7 +29,7 @@
 				//call function to create thread;
 				$this->create_thread();
 			}else{
-				$this->show_message("Fill all the fields");
+				header("Location: ../error_message.php?message=Fill all the fields");
 			}
 		}
 		
@@ -54,9 +54,11 @@
 			$create_thread_array_for_execution = array('category_id'=>$this->category_id, 'thread_by'=>$_SESSION["logged_in"], 'thread_title'=>$this->thread_title, 'thread_body'=>$this->thread_body, 'thread_created_time'=>date("d-m-y"));
 						
 			if($create_thread_query_string->execute($create_thread_array_for_execution)){
-				$this->show_message("Your thread has been created!");
+				header("Location: ../error_message.php?Your thread has been created!");
 			}else{
-				$this->show_message("Unexpected error occured!");
+			
+				$this->show_message("");
+				header("Location: ../error_message.php?message=Unexpected error occured!. in file create_thread_class.php");
 			}
 		}
 		

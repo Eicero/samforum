@@ -9,6 +9,6 @@
 	Free Documentation License". */
 
 	echo $_GET["message"];
-	echo "<a href=\"{$_SERVER["HTTP_REFERER"]}\"> Try again </a>";
+	echo "<a href=\"{$_SERVER["HTTP_REFERER"]}\"> Return :) </a>";
 	
 ?>

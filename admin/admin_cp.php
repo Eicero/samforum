@@ -9,7 +9,7 @@
 
 	session_start();
 	if(!isset($_SESSION["logged_in"])){
-		header("location: index.php");
+		header("location: ../index.php");
 	}
 	
 	define('ALLOWED', true);
@@ -24,6 +24,6 @@
 		echo "<a href=\"edit_category.php\"> Edit category </a> </br>";
 		echo "<a href=\"delete_category.php\"> Delete category </a>";
 	}else{
-		header("location: index.php");
+		header("location: ../index.php");
 	}
 ?>

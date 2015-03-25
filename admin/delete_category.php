@@ -22,6 +22,6 @@
 		$Del_cat->show_categories_to_delete();
 
 	}else{
-		header("location: index.php");
+		header("location: ../index.php");
 	}
 ?>

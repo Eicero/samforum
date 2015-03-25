@@ -72,7 +72,7 @@
 					echo "Thread by: " . $data["thread_by"] . "</br>";
 					echo "Created on: " . $data["thread_created_time"] . "</br>";
 					echo "Thread_title: " . $data["thread_title"] . "</br>";
-					echo "Thread_body: " . $data["thread_body"] . "</br> </br>";
+					echo "Thread_body: " . "<b>" . $data["thread_body"] . "</b>" . "</br> </br>";
 				}
 			}
 		}

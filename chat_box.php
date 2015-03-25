@@ -20,6 +20,8 @@
 	
 	//Checking if user is logged, in.
 	if($Chatbox->is_user_logged_in("logged_in")){
+		echo "<b> samforum chatbox </b>";
+
 	
 		//Show chatbox if is_user_logged_in() returned true(logged in);
 		$Chatbox->show_chatbox();
@@ -39,7 +41,7 @@
 			}
 		}
 	}else{
-		echo "Session not set(user not logged in). Send her to index.php";
+		echo "Session not set(user not logged in). Send it to index.php";
 	}
 ?>
 

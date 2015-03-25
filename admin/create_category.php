@@ -15,6 +15,6 @@
 	if( isset($_SESSION["logged_in"]) and ($Admin_category->is_admin()) ){
 		include_once("create_category_form.php");
 	}else{
-		header("location: index.php");
+		header("location: ../index.php");
 	}
 ?>

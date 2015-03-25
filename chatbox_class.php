@@ -58,9 +58,9 @@
 		public function insert_message(){
 			$insert_message_query = $this->conn->prepare("insert into sami_chatbox(message_by, message) values(:message_by, :message)");
 			if($insert_message_query->execute(array(':message_by'=>$this->username, ':message'=>$this->message))){
-				echo "message inserted";
+				
 			}else{
-				echo "couldnt insert";
+				header("Location: ../error_message.php?message=couldnt insert. query failed in insert message function in chatbox_class.php");
 			}
 		}
 		

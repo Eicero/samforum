@@ -50,10 +50,10 @@
 								$this->reply = $_POST["reply"];
 								return true;
 							}else{
-								$this->show_message("Your reply is too short.");
+								header("Location: ../error_message.php?message=Your reply is too short");
 							}
 						}else{
-							$this->show_message("Reply field cannot be left empty");
+							header("Location: ../error_message.php?message=Reply field cannot be left empty");
 						}
 					}
 				}else{
@@ -82,12 +82,12 @@
 			if($create_table_query->execute()){
 				$insert_reply_query = $this->conn->prepare("insert into replies(category_id, thread_id, reply_by, reply_body, reply_time) values(:category_id, :thread_id, :reply_by, :reply_body, :reply_time)");
 				if($insert_reply_query->execute(array( 'category_id'=>$_GET["cat_id"], 'thread_id'=>$_GET["thread_id"], 'reply_by'=>$_SESSION["logged_in"], 'reply_body'=>$this->reply, 'reply_time'=>date("d-m-y") ))){
-					$this->show_message("Reply sucessfully made");
+					header("Location: ../error_message.php?message=Reply sucessfully made");	
 				}else{
-					$this->show_message("couldn't post reply");
+					header("Location: ../error_message.php?message=Couldn't post reply. query failed");
 				}
 			}else{
-				$this->show_message("Table failed to create");
+				header("Location: ../error_message.php?message=Table failed to create");
 			}
 			
 		}

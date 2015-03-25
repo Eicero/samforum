@@ -31,6 +31,6 @@
 		$Edit_info = new edit_info($conn);
 		$Edit_info->edit_category();
 	}else{
-		header("location: index.php");
+		header("location: ../index.php");
 	}
 ?>
