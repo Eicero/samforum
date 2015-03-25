@@ -1,6 +1,7 @@
 <?PHP
 
 abstract class General{
+
 	//This method generates captcha.
 	static function display_captcha(){
 		//possible letters that can can come in captcha.
@@ -34,10 +35,9 @@ abstract class General{
 		if($_POST["captcha"] == $_SESSION["random_string"]){
 			return true;
 		}else{
-			header("Location: ../error_message.php?message=wrong captcha inserted, try again");
+			echo "Wrong captcha inserted, try again";
 		}
 	}
- 
  
  }
 

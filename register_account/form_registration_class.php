@@ -53,12 +53,12 @@
 							$this->cleaned_data[$field_key]  = strip_tags(stripslashes(trim($field_value, '"')));
 						}
 						
-						//data sanitized. Now call functions and see if they return any data in errors array.
+						//data sanitized. Now call functions and see if they return any data in errors array. All errors are stored in an array.
 						$this->validate_email();
 						$this->validate_passwords();
 						$this->validate_username();
 						
-						//Looping in error aray and checking if there's something in. if not, continue process..
+						//Looping in error aray and checking if there's something in. if not, continue process.. all 3 functions above might have stored errors in errors variables.
 						if(!empty($this->errors)){
 							foreach($this->errors as $show_errors){
 								echo $show_errors . "</br>";
@@ -108,7 +108,7 @@
 			mail($this->cleaned_data["email"], "Account verification",
 			$this->message, 'From: ' . $this->from . "\r\n" );
 			session_start();
-			$this->show_message("Account sucessfully created. Please verify it now.");
+			header("Location: ../error_message.php?message= Account sucessfully created. Please verify");
 		}
 		
 		private function insert_info(){
@@ -167,20 +167,21 @@
 						))){	
 							$this->send_mail();
 						}else{
-							$this->show_message("Error occured, please contact site administrator");
+							header("Location: ../error_message.php?message=Error occured please contact site admin");
 						}
 				
 					}else{
 						$_SESSION["username"] = $this->cleaned_data["username"];
-						$this->show_message($_SESSION["username"] . " has already been taken, chooose different username.");
+						header("Location: ../error_message.php?message=That username as already been taken please try different username");
 					}
 				}else{
 					$_SESSION["email"] = $this->cleaned_data["email"];
-					$this->show_message($_SESSION["email"] .   " :someone else has already registered an account with this email");	
+					header("Location: ../error_message.php?message=someone else has already registered an account with this email");
 				}
 			}else{
-				$_SESSION["ip"] = $this->user_ip;
-				$this->show_message("Account from {$_SESSION["ip"]}  has already been created. We do not allow multiple account </br>");		
+				$_SESSION["ip"] = $this->user_ip;	
+				header("Location: ../error_message.php?message=Account form your IP has already been created. We do not allow multiple account");
+
 			}
 		}
 		

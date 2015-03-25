@@ -8,7 +8,7 @@
 	Texts.  A copy of the license is included in the section entitled "GNU
 	Free Documentation License". */
 
-	
 	echo $_GET["message"];
 	echo "<a href=\"{$_SERVER["HTTP_REFERER"]}\"> Try again </a>";
+	
 ?>

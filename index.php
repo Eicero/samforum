@@ -44,4 +44,6 @@
 	$Data_display = new Data_display($conn);
 	$Data_display->set_title("</br> <b> Boards </b>");
 	$Data_display->show_categories();
+
+
 ?>

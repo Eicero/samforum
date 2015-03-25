@@ -7,6 +7,9 @@
 	Texts.  A copy of the license is included in the section entitled "GNU
 	Free Documentation License". */
 
+	
+	//Dall form data is sent this this file.
+	
 	if(!isset($_SESSION)){
 		session_Start();
 	}
