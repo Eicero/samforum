@@ -1,11 +1,24 @@
 <?PHP
-	/* Copyright (c)  2015  S.Samiuddin. phpdevsami@gmail.com
-	Permission is granted to copy, distribute and/or modify this document
-	under the terms of the GNU Free Documentation License, Version 1.2
-	or any later version published by the Free Software Foundation;
-	with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
-	Texts.  A copy of the license is included in the section entitled "GNU
-	Free Documentation License". */
+//******************************************//
+//* This copyright notice must not be removed
+//* under any circumstances.
+//* It must stay intact in all the files.
+
+//* Samforum
+//* Version 1.0
+//* Script created by Samiuddin Samiuddin
+//* Email: phpdevsami@gmail.com
+//* Skype: n0h4cks
+
+//* - This is not an open source project, functions/classes
+//*   or any other code form this script cannot be
+//*   used for other scripts or applications.
+
+//*   You are not allowed to resell this script.
+
+//* - You are free to make modification/changes,
+//*   however it must be for your own use.
+//*********************************************************************//
 
 	class reply{
 		
