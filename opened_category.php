@@ -32,7 +32,7 @@
 		$show_thread = new Data_display($conn);
 		$show_thread->show_threads();
 		
-		//if user is logged in then..
+		//if user is logged in then.. let him create a thread.
 		if( isset($_SESSION["logged_in"]) ){
 			echo "<b>Create a new thread</b> <form method=\"POST\" action=\"{$_SERVER['PHP_SELF']}?cat_id={$_GET['cat_id']}\">
 			Thread title: <input name=\"thread_title\" type=\"text\"> </br>
@@ -48,7 +48,7 @@
 			echo "You need to login to create a new thread";
 		}
 	}else{
-		echo "No category id found in get variable";
+		echo header("location: index.php");
 	}
 
 	

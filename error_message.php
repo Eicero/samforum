@@ -21,7 +21,9 @@
 //*   however it must be for your own use.
 //*********************************************************************//
 
-	echo $_GET["message"];
+	echo $_GET["message"] . "</br>";
+	echo "<a href=\"index.php\"> Return to homepage </a> </br>";
+	echo "<a href=\"{$_SERVER["HTTP_REFERER"]}\"> Go back </a> </br>";
 
 	
 ?>

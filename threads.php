@@ -45,7 +45,7 @@
 		
 			//show link if user owns the thread.
 			if($Thread_editor->check_if_allowed_to_edit()){
-				echo "<a href=\"thread_body_title_editor.php?thread_id={$_GET["thread_id"]}\"> Edit my thread! </a> </br> </br>";
+				echo "</br> <a href=\"thread_body_title_editor.php?thread_id={$_GET["thread_id"]}\"> Edit this thread </a> </br> </br>";
 			}
 		}else{
 			echo " </br> Please login to post a reply </br>";

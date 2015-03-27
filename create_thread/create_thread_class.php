@@ -39,10 +39,18 @@
 		
 		function validate_input(){
 			if( !empty($this->thread_title) and !empty($this->thread_body) ){
-				//call function to create thread;
-				$this->create_thread();
+				if(strlen($this->thread_title) > 5){
+					if(strlen($this->thread_body) > 10){
+						//call function to create thread;
+						$this->create_thread();
+					}else{
+						header("Location: error_message.php?message=thread body is too short");
+					}
+				}else{
+					header("Location: error_message.php?message=thread title is too short");
+				}
 			}else{
-				header("Location: ../error_message.php?message=Fill all the fields");
+				header("Location: error_message.php?message=Fill all the fields");
 			}
 		}
 		
@@ -67,18 +75,12 @@
 			$create_thread_array_for_execution = array('category_id'=>$this->category_id, 'thread_by'=>$_SESSION["logged_in"], 'thread_title'=>$this->thread_title, 'thread_body'=>$this->thread_body, 'thread_created_time'=>date("d-m-y"));
 						
 			if($create_thread_query_string->execute($create_thread_array_for_execution)){
-				header("Location: ../error_message.php?Your thread has been created!");
+				header("Location: error_message.php?message=Your thread has been created!");
 			}else{
 			
 				$this->show_message("");
-				header("Location: ../error_message.php?message=Unexpected error occured!. in file create_thread_class.php");
+				header("Location: error_message.php?message=Unexpected error occured!. in file create_thread_class.php");
 			}
-		}
-		
-		private function show_message($message){
-			session_start();
-			$_SESSION["message"] = $message;
-			header("location: show_message.php");
 		}
 		
 	}
