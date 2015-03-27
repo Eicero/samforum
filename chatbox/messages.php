@@ -21,7 +21,13 @@
 //*********************************************************************//
 
 	define('ALLOWED', true);
+	include("../general/general_class.php");
 	include("chatbox_class.php");
-	include("connection_to_db.php");
-	Samichatbox::show_messages($conn);
+	include("../connection_to_db.php");
+	$Chatbox = new Samchatbox;
+	if($Chatbox->is_user_logged_in("logged_in")){
+		Samchatbox::show_messages($conn);
+	}else{
+		echo "Session not set(user not logged in). Send it to index.php";
+	}
 ?>

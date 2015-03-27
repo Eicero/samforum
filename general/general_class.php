@@ -51,6 +51,7 @@ abstract class General{
 		echo "<img src='image.png'> </br>";
 	}
 	
+	//This method checks if captcha is right.
 	static function is_captcha_right(){
 		//Check if captcha matches the text inserted. random string session is made by captcha class
 		if($_POST["captcha"] == $_SESSION["random_string"]){
@@ -59,6 +60,22 @@ abstract class General{
 			echo "Wrong captcha inserted, try again";
 		}
 	}
+ 
+	//Checks if user is logged in. Accepts session name as a parameter. like "logged_in"
+	public function is_user_logged_in($session_name){
+			if(isset($_SESSION[$session_name])){
+				$this->username = $_SESSION["logged_in"];
+				return true;
+			}else{
+				return false;
+			}
+		}
+	
+	//this method checks if connection exists and sets it so it can be used anywhere in child class.
+	public function connection_setter($conn){
+		$this->conn = $conn;
+	}
+ 
  
  }
 

@@ -28,7 +28,7 @@
 	session_start();
 	
 	//link to search bar
-	echo "<a href=\"search.php\"> Search on this site </a> </br>";
+	echo "<a href=\"search/search.php\"> Search on this site </a> </br>";
 	
 	if(!isset($_SESSION["logged_in"])){
 		//if user is not logged in then show login, register, and recover_password options
@@ -39,7 +39,7 @@
 		echo "Hello, " .$_SESSION["logged_in"] . "</br>";
 		echo "<a href=\"login_user/logout.php\"> Logout </a> </br>";
 		echo "<a href=\"user_profile.php\"> My profile </a> </br>";
-		echo "<a href=\"chat_box.php\"> Join chat </a> </br>";
+		echo "<a href=\"chatbox/chat_box.php\"> Join chat </a> </br>";
 
 		//If user is logged in(session exists), we're going to check if user is admin.
 		

@@ -32,7 +32,7 @@
 	//Deny 
 	define('ALLOWED', true);
 	
-	include("connection_to_db.php");
+	include("../connection_to_db.php");
 	include("search_class.php");
 	
 	$Search = new Search;

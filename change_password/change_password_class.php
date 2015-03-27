@@ -73,25 +73,20 @@
 					$this->password_one = md5($this->password_one);
 					$this->change_password_to_new();
 				}else{
-					$this->show_message("The password you provided is too weak");
+					header("location: ../error_message.php?message=The password you provided is too weak");
 				}
 			}else{
-				$this->show_message("Please make sure the passwords match");
+				header("location: ../error_message.php?message=Please make sure the passwords match");
 			}
 		}
 		
 		private function change_password_to_new(){
 			$insert_pass_query = $this->conn->prepare("update registered_users set user_password = :user_password where username = :username");
 			if( $insert_pass_query->execute(array('user_password'=>$this->password_one, 'username'=>$_SESSION["logged_in"])) ){
-				$this->show_message("Password has been sucessfully changed!");	
+				header("location: ../error_message.php?message=Password has been sucessfully changed!");
 			}else{
-				$this->show_message("Unknown error occured, please contact admin.");
+				header("location: ../error_message.php?message=Unknown error occured, please contact admin.");
 			}
-		}
-
-		private function show_message($message){
-			$_SESSION["message"] = $message;
-			header("location: ../show_message.php");
 		}
 	}
 

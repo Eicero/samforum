@@ -21,11 +21,11 @@
 //*   however it must be for your own use.
 //*********************************************************************//
 	
-	include("deny_access.php");
-	access("index.php");
+	include("../deny_access.php");
+	access("../index.php");
 	session_start();
 	
-	class Samichatbox{
+	class Samchatbox extends General{
 	
 		protected $conn;
 		public function set_connection($conn){
@@ -66,14 +66,7 @@
 			</form>";
 		}
 		
-		public function is_user_logged_in($session_name){
-			if(isset($_SESSION[$session_name])){
-				$this->username = $_SESSION["logged_in"];
-				return true;
-			}else{
-				return false;
-			}
-		}
+
 		
 		
 		

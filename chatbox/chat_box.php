@@ -22,19 +22,22 @@
 //*********************************************************************//
 	
 	//*************************************//
-	        //////Samichatbox//////
+	        //////Samforum chatbox//////
 	//*************************************//
 	
 	define('ALLOWED', true);
 	
 	//connection file. 
-	include("connection_to_db.php");
+	include("../connection_to_db.php");
+
+	//including general class, which has common functions
+	include("../general/general_class.php");
 	
 	//including clatbox_class.php, it's out Samichatbox class.
 	include("chatbox_class.php");
 	
 	//Creating chatbox object.
-	$Chatbox = new Samichatbox;
+	$Chatbox = new Samchatbox;
 	
 	//Setting $conn variable in class, so it can be used anywhere in it.
 	$Chatbox->set_connection($conn);
@@ -68,7 +71,7 @@
 
 <div id="message"></div>
 
-<script src="jquery.js"></script>
+<script src="../jquery.js"></script>
 <script>
 	$(document).ready(function(){
 	   //ajaxTime.php is called every second to get time from server

@@ -22,8 +22,8 @@
 //*********************************************************************//
 
 	//deny direct access to this file. One search.php is allowed to use this file.
-	include("deny_access.php");
-	access("index.php");
+	include("../deny_access.php");
+	access("../index.php");
 	
 	class Search{
 		protected $conn;
@@ -50,7 +50,7 @@
 			if($select_table->execute()){
 				if( $query_string->execute(array(':thread_title'=>"%$this->search_this%", ':thread_body'=>"%$this->search_this%")) ){
 					while($row = $query_string->fetch(PDO::FETCH_ASSOC) ){
-						echo "<a target=\"_blank\" href=\"threads.php?thread_id={$row["thread_id"]}&cat_id={$row["category_id"]}\"> {$row["thread_title"]} </a> </br>";
+						echo "<a target=\"_blank\" href=\"../threads.php?thread_id={$row["thread_id"]}&cat_id={$row["category_id"]}\"> {$row["thread_title"]} </a> </br>";
 						$returned_result = true;
 					}
 					if(!isset($returned_result)){
