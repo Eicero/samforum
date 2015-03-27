@@ -12,9 +12,11 @@ I have been working on this forum for a while, thought of adding couple premium 
 - Search
 - Post threads
 - Post replies
+- Edit threads(user)
 - Create category(admin)
 - Edit category(admin)
 - Delete categories(admin)
+- Edit threads
 
 
 ##Functionality that may be added in future.
