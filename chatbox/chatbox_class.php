@@ -64,11 +64,7 @@
 			<textarea name=\"message\"></textarea> </br>
 			<input name=\"submit\" value=\"Shout!\" type=\"submit\">
 			</form>";
-		}
-		
-
-		
-		
+		}		
 		
 		public function insert_message(){
 			$insert_message_query = $this->conn->prepare("insert into sami_chatbox(message_by, message) values(:message_by, :message)");
@@ -113,7 +109,7 @@
 			$select_messages_query = $conn->prepare("select * from sami_chatbox");
 			if($select_messages_query->execute()){
 				while($the_message = $select_messages_query->fetch(PDO::FETCH_ASSOC)){
-					echo $the_message["message_by"] . ": ". $the_message["message"] . "</br>";
+					echo html_entities($the_message["message_by"] . ": ". $the_message["message"]) . "</br>";
 				}
 			}
 		}

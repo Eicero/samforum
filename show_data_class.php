@@ -84,8 +84,8 @@
 					//echo "<a href=\"threads.php?thread_id={$data["thread_id"]}\"> {$data["thread_title"]} </a> </br>";
 					echo "Thread by: " . $data["thread_by"] . "</br>";
 					echo "Created on: " . $data["thread_created_time"] . "</br>";
-					echo "Thread_title: " . $data["thread_title"] . "</br>";
-					echo "Thread_body: " . "<b>" . $data["thread_body"] . "</b>" . "</br> </br>";
+					echo "Thread_title: " . htmlentities($data["thread_title"]) . "</br>";
+					echo "Thread_body: " . "<b>" . htmlentities($data["thread_body"]) . "</b>" . "</br> </br>";
 				}
 			}
 		}
@@ -98,7 +98,7 @@
 				while( $replies_to_show = $select_replies_query->fetch(PDO::FETCH_ASSOC) ){
 					echo "Reply by: " . $replies_to_show["reply_by"] . "</br>";
 					echo "Replied on " . $replies_to_show["reply_time"] . "</br>";
-					echo "Reply: " . "<b> {$replies_to_show["reply_body"]} </b>" . "</br> </br>";
+					echo "Reply: " . "<b>" . htmlentities($replies_to_show["reply_body"]) . "</b>" . "</br> </br>";
 
 				}
 			}			
