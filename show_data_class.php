@@ -42,7 +42,7 @@
 				while($data = $select_data_query->fetch(PDO::FETCH_ASSOC)){
 					echo "</br>";
 					echo "<a href=\"$this->file?cat_id={$data["category_id"]}\"> {$data["category_name"]} </a> </br>";
-					echo $data["category_description"] . "</br>";
+					echo "<p> {$data["category_description"]}  </p>";
 				}
 			}
 		}
@@ -61,8 +61,8 @@
 			if($select_data_query->execute(array('category_id'=>$_GET["cat_id"]))){
 				while($data = $select_data_query->fetch(PDO::FETCH_ASSOC)){
 					echo "<a href=\"threads.php?thread_id={$data["thread_id"]}&cat_id={$_GET["cat_id"]}\"> {$data["thread_title"]} </a> </br>";
-					echo "Thread by: " . $data["thread_by"] . "</br>";
-					echo "Created on: " . $data["thread_created_time"] . "</br> </br>";
+					echo "<p class='thread_by'> Thread by: " . $data["thread_by"] . "</p>";
+					echo "<p class='created_on'> Created on: {$data["thread_created_time"]} </p> </br>";
 				}
 			}
 		}
@@ -82,10 +82,10 @@
 			if($select_data_query->execute(array('thread_id'=>$_GET["thread_id"]))){
 				while($data = $select_data_query->fetch(PDO::FETCH_ASSOC)){
 					//echo "<a href=\"threads.php?thread_id={$data["thread_id"]}\"> {$data["thread_title"]} </a> </br>";
-					echo "Thread by: " . $data["thread_by"] . "</br>";
-					echo "Created on: " . $data["thread_created_time"] . "</br>";
-					echo "Thread_title: " . htmlentities($data["thread_title"]) . "</br>";
-					echo "Thread_body: " . "<b>" . htmlentities($data["thread_body"]) . "</b>" . "</br> </br>";
+					echo "<p class='thread_by'> Thread by: " . $data["thread_by"] . "</p>";
+					echo "<p class='created_on'> Created on: "  . $data["thread_created_time"] . "</p>";
+					echo "<b> <p class='grey'>" .  htmlentities($data["thread_title"]) . "</p> </b>";
+					echo "<p class='body'>" . htmlentities($data["thread_body"]) . "</p> </br>";
 				}
 			}
 		}
@@ -96,10 +96,9 @@
 			if($select_replies_query->execute(array('thread_id'=>$_GET["thread_id"]))){
 			//http://localhost/files/threads.php?thread_id=1&cat_id=2
 				while( $replies_to_show = $select_replies_query->fetch(PDO::FETCH_ASSOC) ){
-					echo "Reply by: " . $replies_to_show["reply_by"] . "</br>";
-					echo "Replied on " . $replies_to_show["reply_time"] . "</br>";
-					echo "Reply: " . "<b>" . htmlentities($replies_to_show["reply_body"]) . "</b>" . "</br> </br>";
-
+					echo "<p class='reply_by'>" . $replies_to_show["reply_by"] . "</br>";
+					//echo "<p class='green'> " . $replies_to_show["reply_time"] . "</br>";
+					echo "<p class='reply'>" . htmlentities($replies_to_show["reply_body"]) . "<p class='green'> </br>";
 				}
 			}			
 		}

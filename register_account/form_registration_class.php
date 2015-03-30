@@ -55,7 +55,7 @@
 					//If fields are empty. Do this.
 					if(empty($empty_value)){
 						$this->errors[$empty_key] =  $empty_key . " cannot be left empty. </br>";
-						echo $this->errors[$empty_key];
+						echo "<p> {$this->errors[$empty_key]} </p>";
 					}
 				}
 				

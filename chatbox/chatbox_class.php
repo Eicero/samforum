@@ -109,7 +109,10 @@
 			$select_messages_query = $conn->prepare("select * from sami_chatbox");
 			if($select_messages_query->execute()){
 				while($the_message = $select_messages_query->fetch(PDO::FETCH_ASSOC)){
-					echo html_entities($the_message["message_by"] . ": ". $the_message["message"]) . "</br>";
+				$the_message["message_by"] = htmlentities($the_message["message_by"]);
+				$the_message["message"] = htmlentities($the_message["message"]);
+					echo "<p class='thread_by' style='display:inline'> {$the_message["message_by"]} </p>";
+					echo "<p style='display:inline'> {$the_message["message"]} </p> </br>" ;
 				}
 			}
 		}

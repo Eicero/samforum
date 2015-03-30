@@ -1,3 +1,9 @@
+<html>
+	<head> 
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+</html>
+
 <?PHP
 
 //******************************************//
@@ -21,9 +27,9 @@
 //*   however it must be for your own use.
 //*********************************************************************//
 
-	echo $_GET["message"] . "</br>";
-	echo "<a href=\"index.php\"> Return to homepage </a> </br>";
-	echo "<a href=\"{$_SERVER["HTTP_REFERER"]}\"> Go back </a> </br>";
+	echo "<p> {$_GET["message"]} </p>";
+	echo "<p><a href=\"index.php\"> Return to homepage </a> </p>";
+	echo "<p><a href=\"{$_SERVER["HTTP_REFERER"]}\"> Go back </a> </p> </br>";
 
 	
 ?>

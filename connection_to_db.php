@@ -33,5 +33,4 @@ try{
 }catch(PDOException $error){
 	die($error->getMessage());
 }
-
 ?>

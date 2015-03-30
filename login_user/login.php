@@ -1,3 +1,8 @@
+<html>
+	<head> 
+		<link rel="stylesheet" type="text/css" href="../style.css">
+	</head>
+</html>
 
 <?PHP
 //******************************************//
@@ -20,8 +25,11 @@
 //* - You are free to make modification/changes,
 //*   however it must be for your own use.
 //*********************************************************************//
-	
+	header("Expires: ".gmdate("D, d M Y H:i:s", time()+1800)." GMT");
+	header("Cache-Control: max-age=1800");
+	clearstatcache();
 	session_start();
+
 
 	include("../general/general_class.php");
 	include("login_class.php");
@@ -32,9 +40,9 @@
 ?>
 
 <form method="POST" action="<?PHP $_SERVER["PHP_SELF"];?>">
-	Username: <input name="username" type="text" > </br>
-	Password: <input name="password" type="text" > </br>
-	Enter captcha:  <input name="captcha" type="text" > </br>
+	<p class='form_tile'> Username: </p> <input name="username" type="text" > </br>
+	<p class='form_tile'>Password: </p> <input name="password" type="text" > </br>
+	<p class='form_tile'>Enter captcha: </p>  <input name="captcha" type="text" > </br>
 			 <?PHP Login::display_captcha(); ?>
 	<input name="login" type="submit" value="Login"> </br>
 </form>

@@ -1,3 +1,8 @@
+<html>
+	<head> 
+		<link rel="stylesheet" type="text/css" href="../style.css">
+	</head>
+</html>
 
 <?PHP
 //******************************************//
@@ -44,7 +49,7 @@
 	
 	//Checking if user is logged, in.
 	if($Chatbox->is_user_logged_in("logged_in")){
-		echo "<b> samforum chatbox </b>";
+		echo "<p> samforum chatbox </p>";
 
 	
 		//Show chatbox if is_user_logged_in() returned true(logged in);
@@ -67,6 +72,10 @@
 	}else{
 		echo "Session not set(user not logged in). Send it to index.php";
 	}
+	
+	/*
+	
+	*/
 ?>
 
 <div id="message"></div>

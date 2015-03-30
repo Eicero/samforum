@@ -1,3 +1,9 @@
+<html>
+	<head> 
+		<link rel="stylesheet" type="text/css" href="../style.css">
+	</head>
+</html>
+
 <?PHP
 //******************************************//
 //* This copyright notice must not be removed
@@ -21,11 +27,12 @@
 //*********************************************************************//
 ?>
 
+<p> Search: </p>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET">
   <input name="search_query" type="text">
   <input name="search" type="submit" value="search">
 </form>
-	
+
 <?PHP
 	//search data will be posted here and result will also be shown here.
 	

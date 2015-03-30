@@ -1,3 +1,9 @@
+<html>
+	<head> 
+		<link rel="stylesheet" type="text/css" href="../style.css">
+	</head>
+</html>
+
 <?PHP
 //******************************************//
 //* This copyright notice must not be removed
@@ -24,8 +30,7 @@
 		echo "Hello {$_SESSION} you can change your password here";
 	}else{
 		echo "<form action=\"{$_SERVER["PHP_SELF"]}\"  method=\"POST\">
-		<b> Recover password </b> </br>
-		Your email:
+		<p class='form_title'> Your email: </p>
 		<input name=\"email\" type=\"text\"> </br>
 		<input name=\"recover\" type=\"submit\" value=\"Recover\">
 		</form>";

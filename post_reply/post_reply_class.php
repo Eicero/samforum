@@ -1,3 +1,9 @@
+<html>
+	<head> 
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+</html>
+
 <?PHP
 //******************************************//
 //* This copyright notice must not be removed
@@ -33,7 +39,8 @@
 			$where_to_send_data = "?thread_id={$_GET["thread_id"]}&cat_id={$_GET["cat_id"]}";
 			if( isset($_GET["thread_id"]) and isset($_GET["cat_id"]) ){	
 				if(isset($_SESSION["logged_in"])){
-					echo "Reply with: </br> <form method=\"POST\" action=\"$where_to_send_data\">
+					echo "<p class='form_title'> Reply with: <p>";
+					echo "<form method=\"POST\" action=\"$where_to_send_data\">
 					<textarea name=\"reply\"></textarea> </br>
 					<input name=\"post_reply\" type=\"submit\" value=\"Post reply\">
 					</form>";

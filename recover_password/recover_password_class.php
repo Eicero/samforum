@@ -30,7 +30,7 @@
 					$this->conn = $conn;
 					$this->recover();
 				}else{
-					echo $this->show_message("Fill email field please");
+					header("Location: ../error_message.php?message=Fill email field please");
 				}
 			}
 		}
@@ -40,22 +40,21 @@
 				$this->user_password = md5($_POST["password_one"]);
 				if( (!empty($_POST["password_one"])) and (!empty($_POST["password_two"])) ){
 					if($_POST["password_one"] == $_POST["password_two"]){
-						if(strlen($_POST["password_one"]) > 10){
-							$query_insert_pass = $conn->prepare("update registered_users set user_password = :user_password");
-							if( $query_insert_pass->execute(array('user_password'=>$this->user_password )) ){
+						if(strlen($_POST["password_one"]) > 10){						
+							$query_insert_pass = $conn->prepare("update registered_users SET user_password = :user_password WHERE recovery_code = :recovery_code");
+							if( $query_insert_pass->execute(array(':user_password'=>$this->user_password, ':recovery_code'=>$_SESSION["recovery_code"])) ){
 								$query_del_rec_code = $conn->prepare("update registered_users set recovery_code = :recovery_code");
 								$query_del_rec_code->execute(array('recovery_code'=>''));
-								//header("location: password_changed.php");
-								$this->show_message("Password has been changed");
+								header("Location: ../error_message.php?message=Password has been changed");
 							}
 						}else{
-							$this->show_message('password too small');
+							header("Location: ../error_message.php?message=Password too small");
 						}
 					}else{
-						$this->show_message('passwords do not match');
+						header("Location: ../error_message.php?message=passwords do not match");
 					}
 				}else{
-				$this->show_message('dont leave password field empty');
+					header("Location: ../error_message.php?message=dont leave password field empty");
 				}
 			}
 		}
@@ -69,7 +68,7 @@
 				$_SESSION["recovery_code"] = $_GET["code"];
 				header("location:finish_recovery.php");
 			}else{
-				header("location: index.php");
+				header("location: ../index.php");
 			}
 		}
 		
@@ -78,30 +77,24 @@
 			$this->from = "sami forums";
 			$this->message = "Recovery link:  " . "$this->site_name/finish_recovery.php?code=$this->recovery_code .  If you did not make these change please then do not click the link.";
 			mail($this->email, "Recovery link", $this->message, "From: $this->from");
-			$this->show_message('If your mail was correct you will receive the email soon');
+			header("Location: ../error_message.php?message=If your mail was correct you will receive the email soon");
 		}
 		
 		protected function recover(){
 			$query_select_email = $this->conn->prepare("select email from registered_users where email = :email");
-			$query_select_email->execute(array('email'=>$this->email));
+			$query_select_email->execute(array(':email'=>$this->email));
 			$query_select_email = $query_select_email->fetch(PDO::FETCH_ASSOC);
 			
 			if(!empty($query_select_email)){
 				$this->recovery_code = md5($this->email) . time();
-				$insert_recovery_code = $this->conn->prepare("update registered_users set recovery_code = :recovery_code");
+				$insert_recovery_code = $this->conn->prepare("UPDATE registered_users SET recovery_code = :recovery_code WHERE email = :email");
 
-				if($insert_recovery_code->execute(array('recovery_code'=>$this->recovery_code))){
+				if($insert_recovery_code->execute(array(':recovery_code'=>$this->recovery_code, ':email'=>$this->email))){
 					$this->send_mail();
 				}
 			}else{
-				$this->show_message('if your mail was correct you will receive the email soon');
+				header("Location: ../error_message.php?message=if your mail was correct you will receive the email soon");
 			}
-		}
-		
-		private function show_message($message){
-			session_start();
-			$_SESSION["message"] = $message;
-			header("location: ../show_message.php");
 		}
 	}
 	

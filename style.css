@@ -1,0 +1,39 @@
+body, html{
+	background-color:black;
+}
+
+a{
+	color:red;
+}
+
+p{
+	color:white;
+	padding:0;
+	margin:0;
+}
+
+h3{
+	color:cyan;
+}
+
+.created_on{
+	color:grey;
+}
+
+.thread_by{
+	color:orange;
+}
+
+.reply_by{
+	color:orange;
+}
+
+.form_title{
+	color:white;
+}
+/*
+thread_by/username: orange;
+reply/reply_by: 
+
+
+*/
