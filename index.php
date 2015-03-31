@@ -63,4 +63,6 @@
 	$Data_display = new Data_display($conn);
 	$Data_display->set_title("</br> <b> Boards </b>");
 	$Data_display->show_categories();
+	
+	echo "</br> </br> </br> </br> </br> <p  style='background-color:yellow; color:black; width:300px'>Forum script by <a href='https://github.com/phpdevsami/samforum'> samforum S. Samiuddin</a> </p>";
 ?>

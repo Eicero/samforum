@@ -24,7 +24,7 @@
 	if(!$_SESSION["acc_con"]){
 		header("location: ../index.php");
 	}else{
-		echo "Account has been confirmed, you can now login" . "</br>";
+		header("location : ../show_message?message=Account has been confirmed, you can now login";
 		session_destroy();
 	}
 ?>

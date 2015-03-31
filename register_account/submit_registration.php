@@ -37,5 +37,7 @@
 		require_once("form_registration_class.php");
 		require_once("../connection_to_db.php");
 		$register_user = new register($_POST, $conn);
+		$register_user->site_name = "http://atheustbn.site11.com";
+		$register_user->from = "sami forum";
 	}
 ?>
