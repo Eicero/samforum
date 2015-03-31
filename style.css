@@ -16,6 +16,14 @@ h3{
 	color:cyan;
 }
 
+b {
+	color:white;
+}
+
+form{
+	color:red;
+}
+
 .created_on{
 	color:grey;
 }
